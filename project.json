@@ -1,0 +1,29 @@
+{
+  "overview": "Tele-Blast is a $15/month mobile-first CRM for sales agents, business funding brokers, and insurance agents. It features a power dialer, SMS blast with native template spinning, pipeline management, birthday and follow-up queues, and installable PWA for a native phone experience.",
+  "features": [
+    "Power Dialer with SMS and calling",
+    "Native SMS template spinning with {{first_name}} merge tags",
+    "Pipeline management with drag-and-drop board",
+    "Birthday and Follow-up Queues",
+    "CSV import up to 500 leads per batch",
+    "PWA installable on iOS and Android",
+    "Admin panel with user management and CSV export",
+    "Affiliate program with referral tracking and payouts",
+    "SEO blog with comparison pages for buyer-intent traffic",
+    "Account creation attribution tracking (ChatGPT, Perplexity, Google, social)"
+  ],
+  "category": "crm-sales-tools",
+  "tags": [
+    "crm",
+    "power-dialer",
+    "sms-blast",
+    "sales-agents",
+    "insurance-crm",
+    "business-funding",
+    "mobile-crm",
+    "pwa",
+    "templates",
+    "pipeline-management"
+  ],
+  "last_updated": "2026-05-19T19:35:18.095Z"
+}

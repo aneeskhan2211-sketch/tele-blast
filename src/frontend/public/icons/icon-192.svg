@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <!-- Background: deep navy with safe zone padding for maskable -->
+  <rect width="192" height="192" rx="24" fill="#0a0f1e"/>
+  <!-- Accent gradient circle behind text -->
+  <circle cx="96" cy="96" r="62" fill="#1e3a5f"/>
+  <!-- Orange accent arc -->
+  <path d="M96 34 A62 62 0 0 1 158 96" stroke="#f97316" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <!-- TB monogram -->
+  <text
+    x="96"
+    y="108"
+    font-family="system-ui, -apple-system, sans-serif"
+    font-size="52"
+    font-weight="800"
+    fill="#ffffff"
+    text-anchor="middle"
+    letter-spacing="-2"
+  >TB</text>
+  <!-- Small orange dot accent -->
+  <circle cx="148" cy="55" r="6" fill="#f97316"/>
+</svg>

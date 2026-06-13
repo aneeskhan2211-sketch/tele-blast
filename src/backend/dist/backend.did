@@ -1,0 +1,564 @@
+type UserProfile = 
+ record {
+   companyName: text;
+   createdAt: int;
+   email: text;
+   hearAboutUs: opt text;
+   name: text;
+   phone: text;
+   referredBy: opt text;
+   website: opt text;
+ };
+type UserExportRecord = 
+ record {
+   affiliateApproved: bool;
+   agreementAcceptedAt: opt int;
+   companyName: text;
+   createdAt: int;
+   email: text;
+   hearAboutUs: text;
+   ipAddress: text;
+   isAffiliate: bool;
+   isPaid: bool;
+   name: text;
+   pendingPayouts: nat;
+   phone: text;
+   "principal": text;
+   referralCode: text;
+   referredBy: text;
+   subscribedAt: opt int;
+   subscriptionTier: text;
+   totalCommissions: nat;
+   totalPayouts: nat;
+   website: text;
+ };
+type UserAdminView = 
+ record {
+   agreementAcceptedAt: opt int;
+   featureAccess: bool;
+   ipAddress: opt text;
+   isAdmin: bool;
+   "principal": principal;
+   profile: opt UserProfile;
+   subscribedAt: opt int;
+   subscriptionTier: text;
+ };
+type Timestamp = int;
+type TextRecord = 
+ record {
+   disposition: opt text;
+   messageBody: text;
+   timestamp: int;
+ };
+type SmsTemplate = 
+ record {
+   body: text;
+   createdAt: Timestamp;
+   id: text;
+   name: text;
+ };
+type SampleBusiness = 
+ record {
+   address: text;
+   city: text;
+   email: text;
+   id: nat;
+   industry: text;
+   name: text;
+   phone: text;
+   revenueRange: text;
+   state: text;
+   yearsInBusiness: nat;
+ };
+type ProfileInput = 
+ record {
+   companyName: text;
+   email: text;
+   hearAboutUs: opt text;
+   name: text;
+   phone: text;
+   referredBy: opt text;
+   website: opt text;
+ };
+type PreRegisteredUser = 
+ record {
+   createdAt: int;
+   email: text;
+   name: text;
+   phone: text;
+ };
+type PipelineStage = 
+ variant {
+   ClosedLost;
+   ClosedWon;
+   Contacted;
+   Prospect;
+   Qualified;
+ };
+type Pipeline = 
+ record {
+   createdAt: int;
+   id: nat;
+   name: text;
+ };
+type PayoutFilter = 
+ variant {
+   all;
+   paid;
+   pending;
+   ready;
+ };
+type LeadUpdate = 
+ record {
+   address: opt text;
+   birthday: opt text;
+   city: opt text;
+   email: opt text;
+   firstName: opt text;
+   followUpDate: opt text;
+   industry: opt text;
+   isDnc: opt bool;
+   lastName: opt text;
+   name: opt text;
+   notes: opt text;
+   phone: opt text;
+   pipelineId: opt nat;
+   pipelineStage: opt PipelineStage;
+   qualificationTags: opt vec text;
+   revenueRange: opt text;
+   state: opt text;
+   yearsInBusiness: opt nat;
+ };
+type LeadInput = 
+ record {
+   address: text;
+   birthday: opt text;
+   city: text;
+   email: text;
+   firstName: opt text;
+   followUpDate: opt text;
+   industry: text;
+   isDnc: opt bool;
+   lastName: opt text;
+   name: text;
+   notes: text;
+   phone: text;
+   pipelineId: opt nat;
+   pipelineStage: PipelineStage;
+   qualificationTags: vec text;
+   revenueRange: text;
+   state: text;
+   yearsInBusiness: nat;
+ };
+type Lead = 
+ record {
+   address: text;
+   aiResearch: opt text;
+   birthday: opt text;
+   callHistory: vec CallRecord;
+   city: text;
+   createdAt: int;
+   email: text;
+   emailHistory: vec EmailRecord;
+   firstName: opt text;
+   followUpDate: opt text;
+   id: nat;
+   industry: text;
+   isDnc: bool;
+   isImported: bool;
+   isNewLeadQueued: bool;
+   lastName: opt text;
+   name: text;
+   notes: text;
+   phone: text;
+   pipelineId: opt nat;
+   pipelineStage: PipelineStage;
+   qualificationTags: vec text;
+   revenueRange: text;
+   state: text;
+   textHistory: vec TextRecord;
+   yearsInBusiness: nat;
+ };
+type EnrichedCommissionEntry = 
+ record {
+   affiliateId: text;
+   commissionAmount: nat;
+   hasPurchased: bool;
+   newUserPrincipal: text;
+   referredBizName: text;
+   referredEmail: text;
+   referredName: text;
+   referredPhone: text;
+   status: text;
+ };
+type EmailTemplate = 
+ record {
+   body: text;
+   createdAt: Timestamp;
+   id: text;
+   name: text;
+   subject: text;
+ };
+type EmailRecord = 
+ record {
+   id: text;
+   timestamp: Timestamp;
+ };
+type DripCampaignView = 
+ record {
+   completedAt: opt int;
+   createdAt: int;
+   failedLeadIds: vec nat;
+   id: nat;
+   leadIds: vec nat;
+   name: text;
+   pausedAt: opt int;
+   sentLeadIds: vec nat;
+   startedAt: opt int;
+   status: DripCampaignStatus;
+   templateBody: text;
+   templateId: text;
+ };
+type DripCampaignStatus = text;
+type DashboardStats = 
+ record {
+   closedLost: nat;
+   closedWon: nat;
+   contacted: nat;
+   prospects: nat;
+   qualified: nat;
+   recentLeads: vec Lead;
+ };
+type CsvLeadInput = 
+ record {
+   address: text;
+   birthday: opt text;
+   city: opt text;
+   contactName: text;
+   email: text;
+   industry: opt text;
+   name: text;
+   notes: text;
+   phone: text;
+   state: opt text;
+ };
+type CommissionStatus = 
+ variant {
+   paid;
+   pending;
+   ready;
+ };
+type CommissionEntry = 
+ record {
+   affiliateId: principal;
+   commissionAmount: nat;
+   id: text;
+   newUserPrincipal: principal;
+   paidAt: opt int;
+   payoutEligibleDate: int;
+   paypalEmail: text;
+   planAmount: nat;
+   saleDate: int;
+   status: CommissionStatus;
+ };
+type ColdCallScriptConfigInput = 
+ record {
+   goalType: text;
+   packagesOrServices: text;
+   preQualifyingNeeds: text;
+   whatYouAreSelling: text;
+ };
+type ColdCallScriptConfig = 
+ record {
+   goalType: text;
+   packagesOrServices: text;
+   preQualifyingNeeds: text;
+   whatYouAreSelling: text;
+ };
+type CallRecord = 
+ record {
+   disposition: opt text;
+   outcome: CallOutcome;
+   timestamp: int;
+ };
+type CallOutcome = 
+ variant {
+   leftVoicemail;
+   noAnswer;
+   reached;
+ };
+type BirthdayDripConfigView = 
+ record {
+   createdAt: int;
+   id: text;
+   isActive: bool;
+   templateBody: text;
+ };
+type AffiliateStats = 
+ record {
+   commissions: vec CommissionEntry;
+   paidAmount: nat;
+   pendingAmount: nat;
+   readyAmount: nat;
+   totalClicks: nat;
+   totalConversions: nat;
+ };
+type AffiliateProfile = 
+ record {
+   approved: bool;
+   createdAt: int;
+   email: text;
+   id: principal;
+   name: text;
+   paypalEmail: text;
+   referralCode: text;
+ };
+service : {
+  acceptLiability: (ipAddress: opt text) -> (variant {
+                                               err: text;
+                                               ok;
+                                             });
+  activatePreRegisteredUser: () -> (variant {
+                                      err: text;
+                                      ok: text;
+                                    });
+  addCallRecord: (leadId: nat, outcome: CallOutcome) ->
+   (variant {
+      err: text;
+      ok;
+    });
+  addEmailRecord: (leadId: nat, timestamp: int) -> (variant {
+                                                      err: text;
+                                                      ok;
+                                                    });
+  addEmailTemplate: (name: text, subject: text, body: text) -> (text);
+  addLead: (lead: LeadInput) -> (nat);
+  addSmsTemplate: (name: text, body: text) -> (text);
+  addTextRecord: (leadId: nat, messageBody: text) ->
+   (variant {
+      err: text;
+      ok;
+    });
+  adminCreatePreRegisteredUser: (name: text, email: text, phone: text) ->
+   (variant {
+      err: text;
+      ok;
+    });
+  adminDeleteAllLeads: () -> (variant {
+                                err: text;
+                                ok: nat;
+                              });
+  adminDeletePreRegisteredUser: (email: text) -> (variant {
+                                                    err: text;
+                                                    ok;
+                                                  });
+  adminDeleteUserLeads: (target: principal) -> (variant {
+                                                  err: text;
+                                                  ok: nat;
+                                                });
+  adminEnsureAffiliateRecord: (target: principal, name: text, email: 
+   text) -> (variant {
+               err: text;
+               ok;
+             });
+  adminGetEnrichedPayouts: () -> (vec EnrichedCommissionEntry);
+  adminGetPreRegisteredUsers: () -> (vec PreRegisteredUser);
+  bulkDeleteLeads: (ids: vec nat) -> (variant {
+                                        err: text;
+                                        ok: nat;
+                                      });
+  bulkImportLeads: (csvLeads: vec CsvLeadInput, stage: PipelineStage,
+   pipelineId: opt nat) -> (vec nat);
+  checkFeatureAccess: () -> (bool);
+  checkPreRegisteredByEmail: (email: text) -> (bool) query;
+  checkSubscription: () -> (bool);
+  checkSubscriptionStatus: () -> (record {
+                                    isSubscribed: bool;
+                                    tier: text;
+                                  });
+  clearNewLeadQueued: (leadId: nat) -> (variant {
+                                          err: text;
+                                          ok;
+                                        });
+  createDripCampaign: (name: text, templateId: text, templateBody: text,
+   leadIds: vec nat) -> (variant {
+                           err: text;
+                           ok: DripCampaignView;
+                         });
+  createPipeline: (name: text) -> (variant {
+                                     err: text;
+                                     ok: Pipeline;
+                                   });
+  deleteDripCampaign: (id: nat) -> (variant {
+                                      err: text;
+                                      ok: bool;
+                                    });
+  deleteEmailTemplate: (id: text) -> (bool);
+  deleteLead: (id: nat) -> (bool);
+  deletePipeline: (id: nat) -> (variant {
+                                  err: text;
+                                  ok;
+                                });
+  deleteSmsTemplate: (id: text) -> (bool);
+  generateUserExport: () -> (variant {
+                               err: text;
+                               ok: vec UserExportRecord;
+                             });
+  getAdminUserList: () -> (vec UserAdminView);
+  getAffiliate: () -> (opt AffiliateProfile) query;
+  getAffiliateStats: () -> (AffiliateStats);
+  getAllAffiliates: () -> (vec AffiliateProfile);
+  getAllUsers: () -> (variant {
+                        err: text;
+                        ok: vec UserAdminView;
+                      });
+  getBirthdayDripConfig: () ->
+   (variant {
+      err: text;
+      ok: BirthdayDripConfigView;
+    }) query;
+  getBirthdayLeads: () -> (vec Lead) query;
+  getCallDispositions: () -> (vec text) query;
+  getColdCallConfig: () ->
+   (variant {
+      err: text;
+      ok: ColdCallScriptConfig;
+    }) query;
+  getDashboardStats: (pipelineId: opt nat) -> (DashboardStats) query;
+  getDripCampaign: (id: nat) ->
+   (variant {
+      err: text;
+      ok: DripCampaignView;
+    }) query;
+  getDripCampaigns: () -> (vec DripCampaignView) query;
+  getEmailTemplates: () -> (vec EmailTemplate) query;
+  getEnrichedAffiliateStats: () -> (vec EnrichedCommissionEntry);
+  getLead: (id: nat) -> (opt Lead) query;
+  getLeads: () -> (vec Lead) query;
+  getLiabilityStatus: () -> (bool) query;
+  getNewLeadQueue: () -> (vec Lead) query;
+  getPackageConfig: () -> (vec record {
+                                 enabled: bool;
+                                 tier: text;
+                               }) query;
+  getPayouts: (filter: PayoutFilter) -> (vec CommissionEntry);
+  getPipelines: () -> (vec Pipeline) query;
+  getSampleBusinesses: () -> (vec SampleBusiness) query;
+  getShowComingSoonTeaser: () -> (bool) query;
+  getSmsTemplates: () -> (vec SmsTemplate) query;
+  getSubscriptionTier: () -> (text);
+  getUserCount: () -> (variant {
+                         err: text;
+                         ok: nat;
+                       });
+  getUserProfile: () -> (variant {
+                           err: text;
+                           ok: UserProfile;
+                         }) query;
+  grantAdmin: (target: principal) -> (variant {
+                                        err: text;
+                                        ok;
+                                      });
+  importSampleBusiness: (id: nat) -> (opt nat);
+  isAdmin: () -> (bool);
+  markLeadFailed: (campaignId: nat, leadId: nat) ->
+   (variant {
+      err: text;
+      ok: DripCampaignView;
+    });
+  markLeadSent: (campaignId: nat, leadId: nat) ->
+   (variant {
+      err: text;
+      ok: DripCampaignView;
+    });
+  markPayoutPaid: (commissionId: text) -> (variant {
+                                             err: text;
+                                             ok;
+                                           });
+  markSubscribed: () -> ();
+  pauseDripCampaign: (id: nat) -> (variant {
+                                     err: text;
+                                     ok: DripCampaignView;
+                                   });
+  recordConversion: (code: text) -> ();
+  registerAffiliate: (name: text, email: text, paypalEmail: text) ->
+   (variant {
+      err: text;
+      ok;
+    });
+  restoreUserAccess: (target: principal) -> (variant {
+                                               err: text;
+                                               ok;
+                                             });
+  resumeDripCampaign: (id: nat) ->
+   (variant {
+      err: text;
+      ok: DripCampaignView;
+    });
+  revokeUserAccess: (target: principal) -> (variant {
+                                              err: text;
+                                              ok;
+                                            });
+  saveColdCallConfig: (input: ColdCallScriptConfigInput) ->
+   (variant {
+      err: text;
+      ok: ColdCallScriptConfig;
+    });
+  saveUserProfile: (input: ProfileInput) ->
+   (variant {
+      err: text;
+      ok: UserProfile;
+    });
+  sendSupportContactEmail: (name: text, email: text, issue: text) ->
+   (variant {
+      err: text;
+      ok;
+    });
+  setBirthdayDripConfig: (templateBody: text, isActive: bool) ->
+   (variant {
+      err: text;
+      ok: text;
+    });
+  setPackageEnabled: (tier: text, enabled: bool) -> (variant {
+                                                       err: text;
+                                                       ok;
+                                                     });
+  setShowComingSoonTeaser: (show: bool) -> (variant {
+                                              err: text;
+                                              ok: text;
+                                            });
+  setSubscriptionTier: (tier: text) -> ();
+  setUserTier: (target: principal, tier: text) ->
+   (variant {
+      err: text;
+      ok: record {tier: text;};
+    });
+  spinSms: (_originalMessage: text, _numVersions: nat) ->
+   (variant {
+      err: text;
+      ok: vec text;
+    });
+  stopDripCampaign: (id: nat) -> (variant {
+                                    err: text;
+                                    ok: DripCampaignView;
+                                  });
+  trackReferralClick: (code: text) -> ();
+  updateAffiliatePaypalEmail: (paypalEmail: text) ->
+   (variant {
+      err: text;
+      ok;
+    });
+  updateEmailTemplate: (id: text, name: opt text, subject: opt text, body:
+   opt text) -> (bool);
+  updateLead: (id: nat, updates: LeadUpdate) -> (bool);
+  updateLeadDnc: (leadId: nat, isDnc: bool) ->
+   (variant {
+      err: text;
+      ok: Lead;
+    });
+  updatePipeline: (id: nat, name: text) -> (variant {
+                                              err: text;
+                                              ok;
+                                            });
+  updateSmsTemplate: (id: text, name: opt text, body: opt text) -> (bool);
+}

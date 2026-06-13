@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a5f;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#162d4a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0e1e30;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e87722;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#e87722;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+
+  <!-- Glow accent top-right -->
+  <circle cx="1050" cy="120" r="350" fill="url(#glow)" />
+
+  <!-- Orange accent bar left -->
+  <rect x="0" y="0" width="6" height="630" fill="#e87722" />
+
+  <!-- Logo circle -->
+  <circle cx="100" cy="90" r="36" fill="#e87722" />
+  <!-- TrendingUp icon in circle -->
+  <polyline points="82,102 93,90 103,98 118,78" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="108,78 118,78 118,88" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Brand name -->
+  <text x="148" y="100" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="42" fill="white" letter-spacing="-1">Tele-Blast</text>
+
+  <!-- Divider line -->
+  <rect x="80" y="148" width="1040" height="1.5" fill="rgba(255,255,255,0.12)" />
+
+  <!-- Main headline -->
+  <text x="80" y="240" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="62" fill="white" letter-spacing="-2">Power Dialer, SMS Blast</text>
+  <text x="80" y="318" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="62" fill="white" letter-spacing="-2">&amp; CRM for Sales Teams</text>
+
+  <!-- Tagline -->
+  <text x="80" y="378" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="28" fill="rgba(255,255,255,0.65)">Automate outreach • Close more deals • Built for agents</text>
+
+  <!-- Feature icons row -->
+  <!-- Phone icon box -->
+  <rect x="80" y="430" width="56" height="56" rx="12" fill="rgba(232,119,34,0.2)" stroke="rgba(232,119,34,0.4)" stroke-width="1.5"/>
+  <path d="M107,447 C104,447 99,453 99,460 C99,468 107,476 113,478 C116,479 119,477 120,474 L116,469 C115,468 113,469 112,470 C110,468 107,465 105,463 C106,462 107,460 106,459 L101,455 C101,454 102,452 103,452" fill="none" stroke="#e87722" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="148" y="463" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="18" fill="white">Power Dialer</text>
+  <text x="148" y="483" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="15" fill="rgba(255,255,255,0.5)">Click-to-call &amp; SMS</text>
+
+  <!-- SMS icon box -->
+  <rect x="380" y="430" width="56" height="56" rx="12" fill="rgba(232,119,34,0.2)" stroke="rgba(232,119,34,0.4)" stroke-width="1.5"/>
+  <rect x="395" y="445" width="26" height="18" rx="4" fill="none" stroke="#e87722" stroke-width="2.5"/>
+  <path d="M399,472 L403,463 L402,463" fill="none" stroke="#e87722" stroke-width="2" stroke-linecap="round"/>
+  <line x1="399" y1="451" x2="415" y2="451" stroke="#e87722" stroke-width="2" stroke-linecap="round"/>
+  <line x1="399" y1="456" x2="411" y2="456" stroke="#e87722" stroke-width="2" stroke-linecap="round"/>
+  <text x="448" y="463" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="18" fill="white">SMS Blast</text>
+  <text x="448" y="483" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="15" fill="rgba(255,255,255,0.5)">Broadcast to thousands</text>
+
+  <!-- Pipeline icon box -->
+  <rect x="680" y="430" width="56" height="56" rx="12" fill="rgba(232,119,34,0.2)" stroke="rgba(232,119,34,0.4)" stroke-width="1.5"/>
+  <rect x="695" y="445" width="6" height="22" rx="2" fill="#e87722"/>
+  <rect x="706" y="450" width="6" height="17" rx="2" fill="rgba(232,119,34,0.6)"/>
+  <rect x="717" y="454" width="6" height="13" rx="2" fill="rgba(232,119,34,0.4)"/>
+  <text x="748" y="463" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="18" fill="white">CRM Pipeline</text>
+  <text x="748" y="483" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="15" fill="rgba(255,255,255,0.5)">Lead management</text>
+
+  <!-- Price badge bottom right -->
+  <rect x="960" y="530" width="200" height="70" rx="14" fill="#e87722"/>
+  <text x="1060" y="560" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="32" fill="white" text-anchor="middle">$30/mo</text>
+  <text x="1060" y="585" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="14" fill="rgba(255,255,255,0.85)" text-anchor="middle">No contracts · Cancel anytime</text>
+
+  <!-- tele-blast.com watermark -->
+  <text x="80" y="595" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="18" fill="rgba(255,255,255,0.35)">tele-blast.com</text>
+</svg>

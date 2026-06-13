@@ -1,0 +1,290 @@
+// Version: 1.0.0
+type AdminUser__722290210 =
+  {grantedAt : Int; grantedBy : Principal; principal : Principal};
+type AffiliateProfile__966978725 =
+  {
+    approved : Bool;
+    createdAt : Int;
+    email : Text;
+    id : Principal;
+    name : Text;
+    paypalEmail : Text;
+    referralCode : Text
+  };
+type BirthdayDripConfig__265632249 =
+  {createdAt : Int; id : Text; var isActive : Bool; templateBody : Text};
+type CallOutcome__116329129 = {#leftVoicemail; #noAnswer; #reached};
+type CallRecord__582107177 =
+  {disposition : ?Text; outcome : CallOutcome__116329129; timestamp : Int};
+type ColdCallScriptConfig__593916546 =
+  {
+    goalType : Text;
+    packagesOrServices : Text;
+    preQualifyingNeeds : Text;
+    whatYouAreSelling : Text
+  };
+type CommissionEntry__756292092 =
+  {
+    affiliateId : Principal;
+    commissionAmount : Nat;
+    id : Text;
+    newUserPrincipal : Principal;
+    paidAt : ?Int;
+    payoutEligibleDate : Int;
+    paypalEmail : Text;
+    planAmount : Nat;
+    saleDate : Int;
+    status : CommissionStatus__712553804
+  };
+type CommissionStatus__712553804 = {#paid; #pending; #ready};
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type DripCampaignStatus__539433058 = Text;
+type DripCampaign__854243832 =
+  {
+    var completedAt : ?Int;
+    createdAt : Int;
+    var failedLeadIds : [Nat];
+    id : Nat;
+    var leadIds : [Nat];
+    name : Text;
+    var pausedAt : ?Int;
+    var sentLeadIds : [Nat];
+    var startedAt : ?Int;
+    status : DripCampaignStatus__539433058;
+    var statusMut : DripCampaignStatus__539433058;
+    templateBody : Text;
+    templateId : Text
+  };
+type EmailRecord__1070975722 = {id : Text; timestamp : Timestamp__301639476};
+type EmailTemplate__908474748 =
+  {
+    body : Text;
+    createdAt : Timestamp__301639476;
+    id : Text;
+    name : Text;
+    subject : Text
+  };
+type FeatureAccessRecord__408463538 =
+  {principal : Principal; revokedAt : Int; revokedBy : Principal};
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Lead__531162083 =
+  {
+    address : Text;
+    aiResearch : ?Text;
+    birthday : ?Text;
+    callHistory : [CallRecord__582107177];
+    city : Text;
+    createdAt : Int;
+    email : Text;
+    emailHistory : [EmailRecord__1070975722];
+    firstName : ?Text;
+    followUpDate : ?Text;
+    id : Nat;
+    industry : Text;
+    isDnc : Bool;
+    isImported : Bool;
+    isNewLeadQueued : Bool;
+    lastName : ?Text;
+    name : Text;
+    notes : Text;
+    phone : Text;
+    pipelineId : ?Nat;
+    pipelineStage : PipelineStage__225177346;
+    qualificationTags : [Text];
+    revenueRange : Text;
+    state : Text;
+    textHistory : [TextRecord__1039400978];
+    yearsInBusiness : Nat
+  };
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type List__415060402<T> = List__790383201<T>;
+type List__790383201<T> =
+  {
+    var blockIndex : Nat__490723111;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__490723111
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type PackageConfig__1042271420 = {var enabled : Bool; tier : Text};
+type PipelineStage__225177346 =
+  {#ClosedLost; #ClosedWon; #Contacted; #Prospect; #Qualified};
+type Pipeline__222156468 = {createdAt : Int; id : Nat; name : Text};
+type PreRegisteredUser__175146977 =
+  {createdAt : Int; email : Text; name : Text; phone : Text};
+type ReferralClick__235602794 =
+  {affiliateId : Principal; clickedAt : Int; ip : ?Text};
+type ReferralConversion__136605257 =
+  {
+    affiliateId : Principal;
+    convertedAt : Int;
+    newUserPrincipal : Principal;
+    planAmount : Nat
+  };
+type SampleBusiness__610832095 =
+  {
+    address : Text;
+    city : Text;
+    email : Text;
+    id : Nat;
+    industry : Text;
+    name : Text;
+    phone : Text;
+    revenueRange : Text;
+    state : Text;
+    yearsInBusiness : Nat
+  };
+type SmsTemplate__389896309 =
+  {body : Text; createdAt : Timestamp__301639476; id : Text; name : Text};
+type TextRecord__1039400978 =
+  {disposition : ?Text; messageBody : Text; timestamp : Int};
+type Timestamp__301639476 = Int;
+type UserAcceptance__315463452 =
+  {acceptedAt : Int; ipAddress : ?Text; principal : Principal};
+type UserAdminView__382467032 =
+  {
+    agreementAcceptedAt : ?Int;
+    featureAccess : Bool;
+    ipAddress : ?Text;
+    isAdmin : Bool;
+    principal : Principal;
+    profile : ?UserProfile__129828592;
+    subscribedAt : ?Int;
+    subscriptionTier : Text
+  };
+type UserProfile__129828592 =
+  {
+    companyName : Text;
+    createdAt : Int;
+    email : Text;
+    hearAboutUs : ?Text;
+    name : Text;
+    phone : Text;
+    referredBy : ?Text;
+    website : ?Text
+  };
+type UserSubscription__114989489 =
+  {
+    var isPaid : Bool;
+    principal : Principal;
+    subscribedAt : Int;
+    var tier : Text
+  };
+actor {
+  stable acceptances :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?UserAcceptance__315463452]];
+      var elementIndex : Nat__490723111
+    };
+  stable adminUserCache :
+    {
+      var root : Node__46230540<Principal, UserAdminView__382467032>;
+      var size : Nat__490723111
+    };
+  stable admins :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?AdminUser__722290210]];
+      var elementIndex : Nat__490723111
+    };
+  stable affiliates :
+    {
+      var root : Node__46230540<Principal, AffiliateProfile__966978725>;
+      var size : Nat__490723111
+    };
+  stable birthdayDripStore :
+    {
+      var root : Node__46230540<Principal, BirthdayDripConfig__265632249>;
+      var size : Nat__490723111
+    };
+  stable coldCallConfigs :
+    {
+      var root : Node__46230540<Principal, ColdCallScriptConfig__593916546>;
+      var size : Nat__490723111
+    };
+  stable commissions :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?CommissionEntry__756292092]];
+      var elementIndex : Nat__490723111
+    };
+  stable counter : {var value : Nat};
+  stable dripCounter : {var value : Nat};
+  stable dripStore :
+    {
+      var root :
+        Node__46230540<Principal, List__415060402<DripCampaign__854243832>>;
+      var size : Nat__490723111
+    };
+  stable emailMap :
+    {
+      var root :
+        Node__46230540<Principal, List__415060402<EmailTemplate__908474748>>;
+      var size : Nat__490723111
+    };
+  stable leadsMap :
+    {
+      var root : Node__46230540<Principal, List__415060402<Lead__531162083>>;
+      var size : Nat__490723111
+    };
+  stable packageConfigs :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?PackageConfig__1042271420]];
+      var elementIndex : Nat__490723111
+    };
+  stable pipelinesMap :
+    {
+      var root :
+        Node__46230540<Principal, List__415060402<Pipeline__222156468>>;
+      var size : Nat__490723111
+    };
+  stable preRegisteredUsers :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?PreRegisteredUser__175146977]];
+      var elementIndex : Nat__490723111
+    };
+  stable profiles :
+    {
+      var root : Node__46230540<Principal, UserProfile__129828592>;
+      var size : Nat__490723111
+    };
+  stable referralClicks :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ReferralClick__235602794]];
+      var elementIndex : Nat__490723111
+    };
+  stable referralConversions :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ReferralConversion__136605257]];
+      var elementIndex : Nat__490723111
+    };
+  stable revokedAccess :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?FeatureAccessRecord__408463538]];
+      var elementIndex : Nat__490723111
+    };
+  stable sampleBusinesses : [SampleBusiness__610832095];
+  stable showComingSoonTeaserRef : {var value : Bool};
+  stable smsMap :
+    {
+      var root :
+        Node__46230540<Principal, List__415060402<SmsTemplate__389896309>>;
+      var size : Nat__490723111
+    };
+  stable subscriptions :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?UserSubscription__114989489]];
+      var elementIndex : Nat__490723111
+    }
+};
